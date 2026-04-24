@@ -1,0 +1,27 @@
+module random;
+
+logic [0:3][0:7] packedArray;
+
+logic [7:0]unpackedArray [0:3];
+
+initial begin
+
+packedArray[0] = 8'b11001100;
+
+packedArray[1] = 8'b10101010;
+
+unpackedArray[0] = 8'b11001100;
+
+unpackedArray[1] = 8'b10101010;
+
+$display("Packed Array[0]: %b", packedArray[0]);
+
+$display("Packed Array[1]: %b", packedArray[1]);
+
+$display("Unpacked Array[0]: %b", unpackedArray[0]);
+
+$display("Unpacked Array[1]: %b", unpackedArray[1]);
+
+end
+
+endmodule
