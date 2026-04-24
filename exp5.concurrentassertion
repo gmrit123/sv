@@ -1,0 +1,25 @@
+module random;
+
+reg [3:0] data;
+
+initial begin
+
+data = 4'b0000;
+
+data = data + 4'b0011;
+
+assert (data == 4'b0011)
+
+else $fatal("Assertion failed: data is not equal to 4'b0011");
+
+assert (data == 4'b0100)
+
+else $fatal("Assertion failed: data is not equal to 4'b0100");
+
+$display("Simulation completed successfully!");
+
+$finish;
+
+end
+
+endmodule
