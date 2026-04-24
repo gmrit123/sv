@@ -1,0 +1,41 @@
+module random;
+
+int integerVariable;
+
+logic [3:0] vectorVariable;
+
+bit singleBitVariable;
+
+int arrayExample [0:3][0:7];
+
+reg registerVariable;
+
+initial begin
+
+integerVariable = 42;
+
+vectorVariable = 4'b1101;
+
+singleBitVariable = 1;
+
+registerVariable = 0;
+
+arrayExample[0][0] = 10;
+
+arrayExample[1][2] = 5;
+
+$display("Integer Variable: %0d", integerVariable);
+
+$display("Vector Variable: %b", vectorVariable);
+
+$display("Single Bit Variable: %b", singleBitVariable);
+
+$display("Register Variable: %b", registerVariable);
+
+$display("Array Example[0][0]: %0d", arrayExample[0][0]);
+
+$display("Array Example[1][2]: %0d", arrayExample[1][2]);
+
+end
+
+endmodule
