@@ -1,0 +1,31 @@
+module random;
+
+string fruits[$]={"grape","apple","mango","banana"};
+
+initial begin
+
+$display("Number of fruits=%0d fruits=%p",fruits.size(),fruits);
+
+fruits.insert(1,"peach");
+
+$display("Insert peach,size=%0d fruits=%p",fruits.size(),fruits);
+
+fruits.delete(3);
+
+$display("Delete mango,size=%0d fruits=%p",fruits.size(),fruits);
+
+$display("pop %s, size=%0d fruits=%p",fruits.pop_front(),fruits.size(),fruits);
+
+fruits.push_back("apricot");
+
+$display("Push apricot,size=%0d fruits=%p", fruits.size(),fruits);
+
+$display("Pop %s,size=%0d fruits=%p",fruits.pop_back(),fruits.size(),fruits);
+
+fruits.push_back("plum");
+
+$display("Push plum,size=%0d fruits=%p",fruits.size(),fruits);
+
+end
+
+endmodule
