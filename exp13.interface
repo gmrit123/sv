@@ -1,0 +1,46 @@
+interface mybus(input bit clk);
+
+  logic [7:0] data;
+  logic enable;
+
+  // modports
+  modport DUT (input clk, enable, output data);
+  modport TB  (input clk, data, output enable);
+
+endinterface
+
+
+// DUT Module
+module dut(mybus.DUT busif);
+
+  always @(posedge busif.clk) begin
+    if (busif.enable)
+      busif.data <= busif.data + 1;
+    else
+      busif.data <= 0;
+  end
+
+endmodule
+
+
+// Testbench
+module tb;
+
+  bit clk = 0;
+
+  always #10 clk = ~clk;
+
+  mybus busif(clk);   // interface instance
+  dut d0(busif);      // connect to DUT
+
+  initial begin
+    busif.enable = 0;
+
+    #10 busif.enable = 1;
+    #40 busif.enable = 0;
+    #20 busif.enable = 1;
+
+    #100 $finish;
+  end
+
+endmodule
