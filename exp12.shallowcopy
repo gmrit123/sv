@@ -1,0 +1,30 @@
+class A;
+  int i;
+endclass
+
+class B;
+  A a;
+endclass
+
+module shallow_copy;
+
+  B b1, b2;
+
+  initial begin
+    b1 = new();
+    b1.a = new();
+    b1.a.i = 5;
+
+    b2 = b1; // shallow copy
+
+    $display("b1.a.i = %0d", b1.a.i);
+    $display("b2.a.i = %0d", b2.a.i);
+
+    b1.a.i = 10;
+
+    $display("After change:");
+    $display("b1.a.i = %0d", b1.a.i);
+    $display("b2.a.i = %0d", b2.a.i);
+  end
+
+endmodule
