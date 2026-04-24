@@ -1,0 +1,37 @@
+module value;
+
+  int x, y, z;
+
+  function int sum(input int a, input int b);
+    return a + b;
+  endfunction
+
+  initial begin
+    x = 1;
+    y = 2;
+    z = sum(x, y);
+    $display("z = %0d", z);
+  end
+
+endmodule
+
+
+module reference_example;
+
+  int a, y, z;
+
+  // function using reference arguments
+  function automatic int sum(ref int x, ref int y);
+    return x + y;
+  endfunction
+
+  initial begin
+    a = 1;
+    y = 2;
+
+    z = sum(a, y);
+
+    $display("z = %0d", z);
+  end
+
+endmodule
