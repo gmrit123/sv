@@ -1,0 +1,28 @@
+module task_example;
+
+  task add(input int a, input int b, output int c);
+    c = a + b;
+  endtask
+
+  initial begin
+    int x;
+    add(1, 2, x);
+    $display("x = %0d", x);
+  end
+
+endmodule
+
+
+module function_example;
+
+  function int mul(input int c, input int d);
+    mul = c * d;
+  endfunction
+
+  initial begin
+    int result;
+    result = mul(1, 2);
+    $display("Result = %0d", result);
+  end
+
+endmodule
