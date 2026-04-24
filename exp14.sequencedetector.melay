@@ -1,17 +1,15 @@
-module sequence_detector (
+module mealy_1011 (
   input  bit clk,
   input  bit rst,
   input  bit in,
   output bit out
 );
 
-  typedef enum bit [2:0] {
-    S0, S1, S2, S3, S4
-  } state_t;
+  typedef enum bit [2:0] {S0, S1, S2, S3} state_t;
 
   state_t present, next;
 
-  // State transition
+  // State update
   always_ff @(posedge clk or posedge rst) begin
     if (rst)
       present <= S0;
@@ -25,13 +23,12 @@ module sequence_detector (
       S0: next = (in) ? S1 : S0;
       S1: next = (in) ? S1 : S2;
       S2: next = (in) ? S3 : S0;
-      S3: next = (in) ? S4 : S2;
-      S4: next = (in) ? S1 : S2;
+      S3: next = (in) ? S1 : S2;
       default: next = S0;
     endcase
   end
 
-  // Output logic (Mealy type)
+  // Output logic (Mealy)
   always_comb begin
     if (present == S3 && in == 1)
       out = 1;
