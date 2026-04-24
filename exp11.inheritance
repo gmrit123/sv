@@ -1,0 +1,43 @@
+class parent;
+  int addr;
+
+  function void display();
+    $display("Address = %0d", addr);
+  endfunction
+endclass
+
+
+class child extends parent;
+  int data;
+
+  function void display();
+    super.display();
+    $display("Data = %0d", data);
+  endfunction
+endclass
+
+
+module casting_example;
+
+  parent p;
+  child c;
+
+  initial begin
+    c = new();
+    c.addr = 10;
+    c.data = 20;
+
+    // Upcasting
+    p = c;
+    p.display();
+
+    // Downcasting
+    if ($cast(c, p)) begin
+      c.display();
+    end
+    else begin
+      $display("Casting failed");
+    end
+  end
+
+endmodule
