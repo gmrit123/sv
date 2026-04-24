@@ -1,0 +1,23 @@
+class packet;
+  int count;
+
+  function new();
+    count = 0;
+  endfunction
+endclass
+
+module class_example;
+
+  packet pkt;
+
+  initial begin
+    if (pkt == null)
+      $display("pkt is null");
+
+    pkt = new();
+
+    if (pkt != null)
+      $display("pkt is not null");
+  end
+
+endmodule
